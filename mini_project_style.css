@@ -1,0 +1,178 @@
+/*-----------General style ------------- */
+
+html, body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #323235;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.level {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 20px 5px 20px;
+    opacity: 0;
+}
+
+.wrapper > div > .id,
+.user_details,
+.post_titles > div > div,
+.comments > div > div,
+.post_details > div > div {
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    width: 100%;
+    min-width: 150px;
+    box-shadow: 0 0 15px #bcbcbc;
+    background: #e0d8d8;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+p {
+    display: inline-block;
+}
+
+p::first-letter {
+    text-transform: uppercase;
+}
+
+span {
+    font-weight: 600;
+}
+
+.wrapper > div > .id > p ~ div,
+.comments > div > p:nth-child(odd),
+.post_details > div > p {
+    display: none;
+}
+
+button {
+    width: 100%;
+    padding: 3px;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+    cursor: auto;
+    border: 1px solid #a2a2a2;
+    background: #cdcccc;
+    margin-top: 5px;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+button:not(:disabled):hover {
+    background: #ffffff;
+    transition: 0.3s;
+}
+
+@keyframes fadeout {
+    0% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/*--------------Choose user page----------------*/
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wrapper > div > div > p:before {
+    content: "User ";
+    font-weight: 600;
+}
+
+.wrapper > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/*---------------User details, User posts-------------*/
+
+.user_details {
+    margin: 20px auto;
+}
+
+.post_titles > div > div {
+    width: 18vw;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user_details_base {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post_btn {
+    width: 90%;
+}
+
+.post_titles > div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/*---------------Post details, comments-------------------------*/
+
+.post_details > div,
+.comments > div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 0;
+    flex-wrap: wrap;
+}
+
+.comments p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.comments > div > div {
+    width: 20%;
+}
+
+h3 {
+    text-align: center;
+    opacity: 0;
+}
+
+.post_header {
+    margin-top: 20px;
+}

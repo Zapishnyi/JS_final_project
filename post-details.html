@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Project | User post and comments</title>
+    <link rel="stylesheet" href="./mini_project_style.css">
+</head>
+<body>
+<script src="./render.js"></script>
+<script>
+    // Get parameters from URL
+    let userId = new URL(location).searchParams.get("id")
+    let postId = new URL(location).searchParams.get("postId")
+    // Create base elements and headers
+    let postDetails = elm("div")
+    let comments = elm("div")
+    let postHeader = elm("h3")
+    let commentsHeader = elm("h3")
+    postHeader.innerText = "User post details:"
+    postHeader.classList.add("post_header")
+    postHeader.style.cssText = `animation: fadeout 0.2s 0.3s forwards `;
+    commentsHeader.innerText = "Comments for User post:"
+    commentsHeader.style.cssText = `animation: fadeout 0.2s 0.3s forwards `;
+    comments.classList.add("comments")
+    postDetails.classList.add("post_details")
+    body.append(postHeader, postDetails)
+    // Render page from database as per parameters
+    fetchRender(`https://jsonplaceholder.typicode.com/posts/?userid=${userId}&id=${postId}`, postDetails, ["all"])
+    body.append(commentsHeader, comments)
+    fetchRender(` https://jsonplaceholder.typicode.com/comments/?postId=${postId}`, comments, ["all"])
+</script>
+</body>
+</html>

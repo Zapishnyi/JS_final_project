@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Project | User</title>
+    <link rel="stylesheet" href="mini_project_style.css">
+</head>
+<body>
+<script src="./render.js"></script>
+<script>
+    // Create base elements
+    let wrapBox = elm("div")
+    wrapBox.classList.add("wrapper")
+    body.appendChild(wrapBox)
+    // Render users cards
+    fetchRender("https://jsonplaceholder.typicode.com/users", wrapBox, ["id", "name"]).then(() => {
+        document.querySelectorAll(".wrapper>div>.id").forEach(el => {
+            // Create button in each user card
+            let userDetails = elm("button");
+            userDetails.innerText = "User Details";
+            el.appendChild(userDetails)
+            // Add event to the button
+            userDetails.addEventListener("click", () => {
+                aTeg.setAttribute("href", `user_details.html?id=${el.classList[1].substring(2)}`);
+                aTeg.click();
+            });
+        })
+    })
+</script>
+</body>
+</html>
