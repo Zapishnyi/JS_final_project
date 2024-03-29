@@ -11,6 +11,7 @@ async function fetchRender(url, element, lookUp) {
     .then((data) => data)
     .catch((reject) => document.write(reject));
   render(data, element, lookUp);
+  return data;
 }
 
 // function to render received data
@@ -46,4 +47,5 @@ function render(data, element, lookUp) {
       render(data[detail], dataWrap, lookUp);
     }
   }
+
 }

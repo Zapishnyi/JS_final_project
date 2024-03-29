@@ -16,7 +16,7 @@
     wrapBox.classList.add("wrapper")
     body.appendChild(wrapBox)
     // Render users cards
-    fetchRender("https://jsonplaceholder.typicode.com/users", wrapBox, ["id", "name"]).then(() => {
+    fetchRender("https://jsonplaceholder.typicode.com/users", wrapBox, ["id", "name"]).then((data) => {
         document.querySelectorAll(".wrapper>div>.id").forEach(el => {
             // Create button in each user card
             let userDetails = elm("button");
@@ -24,7 +24,9 @@
             el.appendChild(userDetails)
             // Add event to the button
             userDetails.addEventListener("click", () => {
-                aTeg.setAttribute("href", `user_details.html?id=${el.classList[1].substring(2)}`);
+                // set chosen user information block as object to local storage
+                localStorage.setItem("user",JSON.stringify(data[el.classList[1].substring(2)-1]))
+                aTeg.setAttribute("href", `user_details.html`);
                 aTeg.click();
             });
         })

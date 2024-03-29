@@ -11,8 +11,8 @@
 <body>
 <script src="./render.js"></script>
 <script>
-    // Get parameters from URL
-    let userId = new URL(location).searchParams.get("id")
+    // Get user object from local storage
+    let user = JSON.parse(localStorage.getItem("user"))
     // Create base elements
     let userDataItem = elm("div");
     let base = elm("div")
@@ -23,8 +23,8 @@
     base.style.cssText = `animation: fadeout 0.2s  forwards`
     body.appendChild(base)
     base.appendChild(userDataItem)
-    // Render user information  from database as per parameters  + add button
-    fetchRender(`https://jsonplaceholder.typicode.com/users/${userId}`, userDataItem, ["all"])
+    // Render user information  taken from local storage object + add button
+    render(user, userDataItem, ["all"])
     postsTitleWrap.classList.add("post_titles")
     postBtn.innerText = "Posts of current user"
     postBtn.classList.add("post_btn")
@@ -32,7 +32,7 @@
     // Add event listener for button
     postBtn.addEventListener("click", () => {
         // Render user posts from database as per parameters
-        fetchRender(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`, postsTitleWrap, ["title"]).then(() => {
+        fetchRender(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`, postsTitleWrap, ["title"]).then(() => {
             document.querySelectorAll(".post_titles .id").forEach(el => {
                 // Add button for each post
                 let postDetailBtn = elm("button");
@@ -41,7 +41,7 @@
                 // Add event for each button
                 postDetailBtn.addEventListener("click", () => {
                     // Transfer chosen data and proceed to the next page
-                    aTeg.setAttribute("href", `post-details.html?id=${userId}&postId=${el.classList[1].substring(2)} `);
+                    aTeg.setAttribute("href", `post-details.html?id=${user.id}&postId=${el.classList[1].substring(2)} `);
                     aTeg.click();
                 })
             })
