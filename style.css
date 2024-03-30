@@ -24,7 +24,7 @@ html, body {
 .user_details,
 .post_titles > div > div,
 .comments > div > div,
-.post_details > div > div {
+.post_details > div  {
     display: flex;
     flex-direction: column;
     max-width: 320px;
@@ -52,8 +52,7 @@ span {
 }
 
 .wrapper > div > .id > p ~ div,
-.comments > div > p:nth-child(odd),
-.post_details > div > p {
+.comments > div > p:nth-child(odd){
     display: none;
 }
 
@@ -149,7 +148,7 @@ button:not(:disabled):hover {
 
 /*---------------Post details, comments-------------------------*/
 
-.post_details > div,
+.post_details ,
 .comments > div {
     width: 100%;
     display: flex;

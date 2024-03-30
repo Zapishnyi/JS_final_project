@@ -29,19 +29,19 @@
     postBtn.innerText = "Posts of current user"
     postBtn.classList.add("post_btn")
     base.append(postBtn, postsTitleWrap)
-    // Add event listener for button
     postBtn.addEventListener("click", () => {
         // Render user posts from database as per parameters
-        fetchRender(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`, postsTitleWrap, ["title"]).then(() => {
+        fetchRender(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`, postsTitleWrap, ["title"]).then((data) => {
             document.querySelectorAll(".post_titles .id").forEach(el => {
                 // Add button for each post
                 let postDetailBtn = elm("button");
                 postDetailBtn.innerText = "Post details"
                 el.appendChild(postDetailBtn)
                 // Add event for each button
-                postDetailBtn.addEventListener("click", () => {
-                    // Transfer chosen data and proceed to the next page
-                    aTeg.setAttribute("href", `post-details.html?id=${user.id}&postId=${el.classList[1].substring(2)} `);
+                postDetailBtn.addEventListener("click", () =>{
+                    // Set chosen data to local storage and proceed to the next page
+                    localStorage.setItem("post",JSON.stringify(...data.filter(e=>e.id===+el.classList[1].substring(2))));
+                    aTeg.setAttribute("href", `post-details.html`);
                     aTeg.click();
                 })
             })
