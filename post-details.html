@@ -12,16 +12,16 @@
 <script src="./render.js"></script>
 <script>
     // Alternative: Get parameters from URL
-    // let userId = new URL(location).searchParams.get("id")
-    // let postId = new URL(location).searchParams.get("postId")
+    // const userId = new URL(location).searchParams.get("id")
+    // const postId = new URL(location).searchParams.get("postId")
 
     // Get user post from session storage
-    let post = JSON.parse(sessionStorage.getItem("post"))
+    const post = JSON.parse(sessionStorage.getItem("post"))
     // Create base elements and headers
-    let postDetails = elm("div")
-    let comments = elm("div")
-    let postHeader = elm("h3")
-    let commentsHeader = elm("h3")
+    const postDetails = elm("div")
+    const comments = elm("div")
+    const postHeader = elm("h3")
+    const commentsHeader = elm("h3")
     postHeader.innerText = "User post details:"
     postHeader.classList.add("post_header")
     postHeader.style.cssText = `animation: fadeout 0.2s 0.3s forwards `;

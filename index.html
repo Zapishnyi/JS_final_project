@@ -12,14 +12,14 @@
 <script src="./render.js"></script>
 <script>
     // Create base elements
-    let wrapBox = elm("div")
+    const wrapBox = elm("div")
     wrapBox.classList.add("wrapper")
     body.appendChild(wrapBox)
     // Render users cards
     fetchRender("https://jsonplaceholder.typicode.com/users", wrapBox, ["id", "name"]).then((data) => {
         document.querySelectorAll(".wrapper>div>.id").forEach(el => {
             // Create button in each user card
-            let userDetails = elm("button");
+            const userDetails = elm("button");
             userDetails.innerText = "User Details";
             el.appendChild(userDetails)
             // Add event to the button
