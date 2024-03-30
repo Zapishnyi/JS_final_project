@@ -11,6 +11,10 @@
 <body>
 <script src="./render.js"></script>
 <script>
+    // Alternative: Get parameters from URL
+    // let userId = new URL(location).searchParams.get("id")
+    // let postId = new URL(location).searchParams.get("postId")
+
     // Get user post from local storage
     let post = JSON.parse(localStorage.getItem("post"))
     // Create base elements and headers
@@ -26,10 +30,18 @@
     comments.classList.add("comments")
     postDetails.classList.add("post_details")
     body.append(postHeader, postDetails)
+
+    // Alternative: Render user post from database as per parameters
+    // fetchRender(`https://jsonplaceholder.typicode.com/posts/?userid=${userId}&id=${postId}`, postDetails, ["all"])
+
     // Render user post received from local storage
-   render(post, postDetails, ["all"])
+    render(post, postDetails, ["all"])
     body.append(commentsHeader, comments)
-    // Render comments to the user post
+
+    //  Alternative: Render comments to the user post from database as per parameters
+    //     fetchRender(` https://jsonplaceholder.typicode.com/comments/?postId=${postId}`, comments, ["all"])
+
+    // Alternative: Render comments to the user post from database as per parameters
     fetchRender(` https://jsonplaceholder.typicode.com/comments/?postId=${post.id}`, comments, ["all"])
 </script>
 </body>

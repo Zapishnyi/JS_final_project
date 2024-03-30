@@ -24,6 +24,10 @@
             el.appendChild(userDetails)
             // Add event to the button
             userDetails.addEventListener("click", () => {
+
+                // Alternative: pass over user id in URL search parameters
+                // aTeg.setAttribute("href", `user_details.html?id=${el.classList[1].substring(2)}`);
+
                 // set chosen user information block as object to local storage
                 localStorage.setItem("user",JSON.stringify(data[el.classList[1].substring(2)-1]))
                 aTeg.setAttribute("href", `user_details.html`);

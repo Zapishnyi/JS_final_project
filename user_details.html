@@ -11,6 +11,9 @@
 <body>
 <script src="./render.js"></script>
 <script>
+    // Alternative: Get parameters from URL
+    // let userId = new URL(location).searchParams.get("id")
+
     // Get user object from local storage
     let user = JSON.parse(localStorage.getItem("user"))
     // Create base elements
@@ -23,14 +26,19 @@
     base.style.cssText = `animation: fadeout 0.2s  forwards`
     body.appendChild(base)
     base.appendChild(userDataItem)
-    // Render user information  taken from local storage object + add button
+
+    // Alternative: Render user information  from database as per parameters
+    // fetchRender(`https://jsonplaceholder.typicode.com/users/${userId}`, userDataItem, ["all"])
+
+    // Render user information  taken from local storage object
     render(user, userDataItem, ["all"])
     postsTitleWrap.classList.add("post_titles")
     postBtn.innerText = "Posts of current user"
     postBtn.classList.add("post_btn")
+    // Add button, and wrapper for user posts
     base.append(postBtn, postsTitleWrap)
     postBtn.addEventListener("click", () => {
-        // Render user posts from database as per parameters
+        // Render user posts from database as per parameters to wrapper
         fetchRender(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`, postsTitleWrap, ["title"]).then((data) => {
             document.querySelectorAll(".post_titles .id").forEach(el => {
                 // Add button for each post
@@ -39,6 +47,10 @@
                 el.appendChild(postDetailBtn)
                 // Add event for each button
                 postDetailBtn.addEventListener("click", () =>{
+
+                    // Alternative: Transfer chosen data to the next page in search params
+                    // aTeg.setAttribute("href", `post-details.html?id=${userId}&postId=${el.classList[1].substring(2)}`)
+
                     // Set chosen data to local storage and proceed to the next page
                     localStorage.setItem("post",JSON.stringify(...data.filter(e=>e.id===+el.classList[1].substring(2))));
                     aTeg.setAttribute("href", `post-details.html`);
