@@ -14,8 +14,8 @@
     // Alternative: Get parameters from URL
     // let userId = new URL(location).searchParams.get("id")
 
-    // Get user object from local storage
-    let user = JSON.parse(localStorage.getItem("user"))
+    // Get user object from session storage
+    let user = JSON.parse(sessionStorage.getItem("user"))
     // Create base elements
     let userDataItem = elm("div");
     let base = elm("div")
@@ -30,7 +30,7 @@
     // Alternative: Render user information  from database as per parameters
     // fetchRender(`https://jsonplaceholder.typicode.com/users/${userId}`, userDataItem, ["all"])
 
-    // Render user information  taken from local storage object
+    // Render user information  taken from session storage object
     render(user, userDataItem, ["all"])
     postsTitleWrap.classList.add("post_titles")
     postBtn.innerText = "Posts of current user"
@@ -51,8 +51,8 @@
                     // Alternative: Transfer chosen data to the next page in search params
                     // aTeg.setAttribute("href", `post-details.html?id=${userId}&postId=${el.classList[1].substring(2)}`)
 
-                    // Set chosen data to local storage and proceed to the next page
-                    localStorage.setItem("post",JSON.stringify(...data.filter(e=>e.id===+el.classList[1].substring(2))));
+                    // Set chosen data to session storage and proceed to the next page
+                    sessionStorage.setItem("post",JSON.stringify(...data.filter(e=>e.id===+el.classList[1].substring(2))));
                     aTeg.setAttribute("href", `post-details.html`);
                     aTeg.click();
                 })

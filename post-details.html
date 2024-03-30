@@ -15,8 +15,8 @@
     // let userId = new URL(location).searchParams.get("id")
     // let postId = new URL(location).searchParams.get("postId")
 
-    // Get user post from local storage
-    let post = JSON.parse(localStorage.getItem("post"))
+    // Get user post from session storage
+    let post = JSON.parse(sessionStorage.getItem("post"))
     // Create base elements and headers
     let postDetails = elm("div")
     let comments = elm("div")
@@ -34,7 +34,7 @@
     // Alternative: Render user post from database as per parameters
     // fetchRender(`https://jsonplaceholder.typicode.com/posts/?userid=${userId}&id=${postId}`, postDetails, ["all"])
 
-    // Render user post received from local storage
+    // Render user post received from session storage
     render(post, postDetails, ["all"])
     body.append(commentsHeader, comments)
 
