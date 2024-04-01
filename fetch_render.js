@@ -1,10 +1,10 @@
-// general
+// creation of elements, variables and functions used at each page
 const elm = (tegName) => document.createElement(tegName);
 const body = document.querySelector("body");
 const aTeg = elm("a");
 let delay = 0;
 
-// Get data from database using provided URL and passover data to render function
+// Get data from database using provided URL, and passover URL, element to render in and render "skip option to render function
 async function fetchRender(url, element, lookUp) {
   const data = await fetch(url)
     .then((response) => response.json())
@@ -14,7 +14,7 @@ async function fetchRender(url, element, lookUp) {
   return data;
 }
 
-// function to render received data
+// Function to render received data
 function render(data, element, lookUp) {
   const dataWrap = elm("div");
   dataWrap.classList.add(`level`);
@@ -43,7 +43,7 @@ function render(data, element, lookUp) {
       dataString.innerHTML = `<span>${detail}</span> : ${value}`;
       dataWrap.appendChild(dataString);
     }
-    // if object detected, repeat whole render block for this object
+    // if object detected, repeat whole render logic for this object
     if (typeof data[detail] === "object") {
       render(data[detail], dataWrap, lookUp);
     }

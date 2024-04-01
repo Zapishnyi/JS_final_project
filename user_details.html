@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<script src="./render.js"></script>
+<script src="fetch_render.js"></script>
 <script>
     // Alternative: Get parameters from URL
     // const userId = new URL(location).searchParams.get("id")
@@ -51,7 +51,7 @@
                     // Alternative: Transfer chosen data to the next page in search params
                     // aTeg.setAttribute("href", `post-details.html?id=${userId}&postId=${el.classList[1].substring(2)}`)
 
-                    // Set chosen data to session storage and proceed to the next page
+                    // Set chosen data to session storage and proceed to the post details page
                     sessionStorage.setItem("post",JSON.stringify(...data.filter(e=>e.id===+el.classList[1].substring(2))));
                     aTeg.setAttribute("href", `post-details.html`);
                     aTeg.click();

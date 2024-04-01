@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<script src="./render.js"></script>
+<script src="fetch_render.js"></script>
 <script>
     // Alternative: Get parameters from URL
     // const userId = new URL(location).searchParams.get("id")
@@ -41,7 +41,7 @@
     //  Alternative: Render comments to the user post from database as per parameters
     //     fetchRender(` https://jsonplaceholder.typicode.com/comments/?postId=${postId}`, comments, ["all"])
 
-    // Alternative: Render comments to the user post from database as per parameters
+     // Render comments to the user post from database.
     fetchRender(` https://jsonplaceholder.typicode.com/comments/?postId=${post.id}`, comments, ["all"])
 </script>
 </body>
