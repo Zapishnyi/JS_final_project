@@ -18,18 +18,13 @@
     // Get user post from session storage
     const post = JSON.parse(sessionStorage.getItem("post"))
     // Create base elements and headers
-    const postDetails = elm("div")
-    const comments = elm("div")
-    const postHeader = elm("h3")
-    const commentsHeader = elm("h3")
-    postHeader.innerText = "User post details:"
-    postHeader.classList.add("post_header")
-    postHeader.style.cssText = `animation: fadeout 0.2s 0.3s forwards `;
-    commentsHeader.innerText = "Comments for User post:"
-    commentsHeader.style.cssText = `animation: fadeout 0.2s 0.3s forwards `;
-    comments.classList.add("comments")
-    postDetails.classList.add("post_details")
-    body.append(postHeader, postDetails)
+    const postDetails = elm("div",["post_details"])
+    const comments = elm("div",["comments"])
+    const postHeader = elm("h3",["post_header"],"User post details:")
+    const commentsHeader = elm("h3",[], "Comments for User post:")
+     postHeader.style.cssText = `animation: fadeout 0.2s 0.3s forwards `;
+     commentsHeader.style.cssText = `animation: fadeout 0.2s 0.3s forwards `;
+     body.append(postHeader, postDetails)
 
     // Alternative: Render user post from database as per parameters
     // fetchRender(`https://jsonplaceholder.typicode.com/posts/?userid=${userId}&id=${postId}`, postDetails, ["all"])

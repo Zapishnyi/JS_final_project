@@ -17,12 +17,10 @@
     // Get user object from session storage
     const user = JSON.parse(sessionStorage.getItem("user"))
     // Create base elements
-    const userDataItem = elm("div");
-    const base = elm("div")
-    const postBtn = elm("button")
-    const postsTitleWrap = elm("div");
-    userDataItem.classList.add("user_details")
-    base.classList.add("user_details_base")
+    const userDataItem = elm("div",["user_details"]);
+    const base = elm("div",["user_details_base"])
+    const postBtn = elm("button",["post_btn"],"Posts of current user")
+    const postsTitleWrap = elm("div",["post_titles"]);
     base.style.cssText = `animation: fadeout 0.2s  forwards`
     body.appendChild(base)
     base.appendChild(userDataItem)
@@ -32,9 +30,6 @@
 
     // Render user information  taken from session storage object
     render(user, userDataItem, ["all"])
-    postsTitleWrap.classList.add("post_titles")
-    postBtn.innerText = "Posts of current user"
-    postBtn.classList.add("post_btn")
     // Add button, and wrapper for user posts
     base.append(postBtn, postsTitleWrap)
     postBtn.addEventListener("click", () => {
@@ -42,8 +37,7 @@
         fetchRender(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`, postsTitleWrap, ["title"]).then((data) => {
             document.querySelectorAll(".post_titles .id").forEach(el => {
                 // Add button for each post
-                const postDetailBtn = elm("button");
-                postDetailBtn.innerText = "Post details"
+                const postDetailBtn = elm("button",[],"Post details");
                 el.appendChild(postDetailBtn)
                 // Add event for each button
                 postDetailBtn.addEventListener("click", () =>{

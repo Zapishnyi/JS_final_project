@@ -1,5 +1,10 @@
 // creation of elements, variables and functions used at each page
-const elm = (tegName) => document.createElement(tegName);
+function elm ()  {
+  let elm = document.createElement(arguments[0]);
+  if (arguments[1]){arguments[1].forEach(e=>elm.classList.add(e))}
+  if (arguments[2]){elm.innerHTML = arguments[2]}
+  return elm
+}
 const body = document.querySelector("body");
 const aTeg = elm("a");
 let delay = 0;
@@ -16,9 +21,8 @@ async function fetchRender(url, element, lookUp) {
 
 // Function to render received data
 function render(data, element, lookUp) {
-  const dataWrap = elm("div");
-  dataWrap.classList.add(`level`);
-  // add idNo to class (to use it later for button event)
+  const dataWrap = elm("div",[`level`]);
+   // add idNo to class (to use it later for button event)
   if (data.id) {
     dataWrap.classList.add(`id${data.id}`, `id`);
   }
