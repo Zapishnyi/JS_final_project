@@ -1,4 +1,4 @@
-// creation of elements, variables and functions used at each page
+// function for element creation + variables used at each page
 function elm ()  {
   let elm = document.createElement(arguments[0]);
   if (arguments[1]){arguments[1].forEach(e=>elm.classList.add(e))}
@@ -9,7 +9,7 @@ const body = document.querySelector("body");
 const aTeg = elm("a");
 let delay = 0;
 
-// Get data from database using provided URL, and passover URL, element to render in and render "skip option to render function
+// Get data from database using provided URL. Passover URL, element (where to render) and "skip" option to render function
 async function fetchRender(url, element, lookUp) {
   const data = await fetch(url)
     .then((response) => response.json())
@@ -21,7 +21,7 @@ async function fetchRender(url, element, lookUp) {
 
 // Function to render received data
 function render(data, element, lookUp) {
-  const dataWrap = elm("div",[`level`]);
+  const dataWrap = elm("div",["level"]);
    // add idNo to class (to use it later for button event)
   if (data.id) {
     dataWrap.classList.add(`id${data.id}`, `id`);
@@ -47,7 +47,7 @@ function render(data, element, lookUp) {
       dataString.innerHTML = `<span>${detail}</span> : ${value}`;
       dataWrap.appendChild(dataString);
     }
-    // if object detected, repeat whole render logic for this object
+    // if object detected in value, repeat whole render logic for this object
     if (typeof data[detail] === "object") {
       render(data[detail], dataWrap, lookUp);
     }

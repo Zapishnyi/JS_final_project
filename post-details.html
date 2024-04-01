@@ -34,7 +34,7 @@
     body.append(commentsHeader, comments)
 
     //  Alternative: Render comments to the user post from database as per parameters
-    //     fetchRender(` https://jsonplaceholder.typicode.com/comments/?postId=${postId}`, comments, ["all"])
+    //  fetchRender(` https://jsonplaceholder.typicode.com/comments/?postId=${postId}`, comments, ["all"])
 
      // Render comments to the user post from database.
     fetchRender(` https://jsonplaceholder.typicode.com/comments/?postId=${post.id}`, comments, ["all"])
